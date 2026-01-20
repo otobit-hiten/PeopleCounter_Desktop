@@ -1,0 +1,224 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PeopleCounterDesktop.Views.BuildingsPage"
+    BackgroundColor="#1E1E1E"
+    Shell.NavBarIsVisible="False">
+
+
+    <VerticalStackLayout Margin="0,0,0,0">
+
+        <Label Text="LOCATIONS - DASHBOARD"
+               FontSize="30"
+               Background="#1E88E5"
+               Margin="0,0,0,0"
+               Padding="20,10,0,0"
+               HorizontalOptions="Fill"
+               FontFamily="PoppinsBold"
+               TextColor="White"/>
+
+        <CollectionView ItemsSource="{Binding Buildings}"
+               >
+
+            <CollectionView.EmptyView>
+            <Grid>
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="12">
+
+                    <Image
+                    Source="empty.png"
+                    WidthRequest="120"
+                    HeightRequest="120"
+                    Opacity="0.6"
+                    HorizontalOptions="Center"/>
+
+                    <Label
+                    Text="No data found"
+                    FontSize="16"
+                    TextColor="Gray"
+                    HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                         HorizontalItemSpacing="5"
+                         VerticalItemSpacing="15"
+                         Span="3" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeThickness="0"
+                    BackgroundColor="Transparent"
+                    Padding="10,0,10,0">
+
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#33000000"
+                                 Radius="10"
+                                Opacity="1" />    
+                        </Border.Shadow>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+
+                        <Grid>
+                            <Border StrokeThickness="0">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="WhiteSmoke" Offset="3.0"/>
+                                        <GradientStop Color="WhiteSmoke" Offset="0.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+
+                            <VerticalStackLayout Padding="20" Spacing="20">
+
+                                <Label Text="{Binding Building}"
+                               FontSize="22"
+                               FontFamily="PoppinsBold"
+                               TextColor="#333333"
+                               HorizontalTextAlignment="Start"/>
+
+                                <Grid ColumnDefinitions="*,*,*"
+                              ColumnSpacing="10"
+                              RowSpacing="8"
+                                  Padding="0,0,0,10">
+
+                                    <Border Grid.Column="0"
+                                    BackgroundColor="#2610B981"
+                                    Padding="12,10"
+                                    StrokeThickness="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+
+                                        <VerticalStackLayout Spacing="4">
+
+                                            <HorizontalStackLayout HorizontalOptions="Center">
+                                                <Image Source="in_user.png"
+                                                    HeightRequest="50"
+                                                    WidthRequest="50" />
+                                                    <Image Source="in.png"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="End"/>      
+                                            </HorizontalStackLayout>
+
+                                            <Label Text="{Binding TotalIn}"
+                                           FontSize="26"
+                                           FontFamily="PoppinsBold"
+                                           TextColor="#10B981"
+                                           HorizontalTextAlignment="Center"/>
+                                            <Label Text="Entries"
+                                           FontSize="11"
+                                            FontFamily="PoppinsSemiBold"
+                                           TextColor="#333333"
+                                           HorizontalTextAlignment="Center"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+
+                                    <Border Grid.Column="1"
+                                    BackgroundColor="#26EF4444"
+                                    Padding="12,10"
+                                    StrokeThickness="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+
+                                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+
+                                            <HorizontalStackLayout>
+                                                <Image Source="out_user.png"
+                                                   HeightRequest="50"
+                                                   WidthRequest="50" />
+                                                <Image Source="out.png"
+                                                   Rotation="180"
+                                                   HeightRequest="30"
+                                                   WidthRequest="30"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="End"/>          
+                                            </HorizontalStackLayout>
+                                            
+                                            <Label Text="{Binding TotalOut}"
+                                           
+                                               FontSize="26"
+                                               FontFamily="PoppinsBold"
+                                           TextColor="#EF4444"
+                                           HorizontalTextAlignment="Center"/>
+                                            <Label Text="Exits"
+                                           FontSize="12"
+                                            FontFamily="PoppinsSemiBold"
+                                           TextColor="#333333"
+                                           HorizontalTextAlignment="Center"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+
+
+                                    <Border Grid.Column="2"
+                                    BackgroundColor="#263B82F6"
+                                    Padding="12,10"
+                                    StrokeThickness="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+
+                                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+
+                                            <Image Source="user.png"
+                                                HeightRequest="50"
+                                                WidthRequest="50"/>
+                                            <Label Text="{Binding TotalCapacity}"
+                                           FontSize="26"
+                                               FontFamily="PoppinsBold"
+                                           TextColor="#3B82F6"
+                                           HorizontalTextAlignment="Center"/>
+                                            <Label Text="Currently Inside"
+                                           FontSize="12"
+                                           FontFamily="PoppinsSemiBold"
+                                           TextColor="#333333"
+                                           HorizontalTextAlignment="Center"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+
+                                </Grid>
+
+                                <Button Text="Reset"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                      Path=BindingContext.ResetBuildingCommand}"
+
+                                     CommandParameter="{Binding .}"
+                                        
+                                        IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                        Path=BindingContext.IsAdmin}" 
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    FontSize="12"
+                                    />
+
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}},
+                                          Path=BindingContext.OpenBuildingCommand}"
+                        CommandParameter="{Binding Building}"/>
+                        </Border.GestureRecognizers>
+
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

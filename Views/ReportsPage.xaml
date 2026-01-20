@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PeopleCounterDesktop.Views.ReportsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PeopleCounterDesktop.Controls"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+    Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,50">
+
+        <VerticalStackLayout
+            Grid.Row="0"
+            Padding="20,10,20,10"
+            Spacing="8">
+
+            <HorizontalStackLayout Spacing="15">
+
+                <VerticalStackLayout
+                    HorizontalOptions="Start"
+                    Spacing="4"
+                    VerticalOptions="Center">
+                    <Label FontAttributes="Bold" Text="Report Type:" />
+                    <Picker
+                        BackgroundColor="#EEEEEE"
+                        HeightRequest="44"
+                        ItemsSource="{Binding ReportType}"
+                        SelectedItem="{Binding SelectedReportType}"
+                        WidthRequest="200" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+                    IsVisible="False"
+                    Spacing="4"
+                    VerticalOptions="Center">
+
+                    <VerticalStackLayout.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SelectedReportType}"
+                            TargetType="VerticalStackLayout"
+                            Value="Devices">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                    </VerticalStackLayout.Triggers>
+
+                    <Label FontAttributes="Bold" Text="Device" />
+                    <Picker
+                        BackgroundColor="#EEEEEE"
+                        HeightRequest="44"
+                        ItemsSource="{Binding DeviceList}"
+                        SelectedItem="{Binding SelectedDevice}"
+                        WidthRequest="200" />
+                </VerticalStackLayout>
+
+                <!--  Location  -->
+                <VerticalStackLayout
+                    IsVisible="False"
+                    Spacing="4"
+                    VerticalOptions="Center">
+
+                    <VerticalStackLayout.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SelectedReportType}"
+                            TargetType="VerticalStackLayout"
+                            Value="Locations">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                    </VerticalStackLayout.Triggers>
+
+                    <Label FontAttributes="Bold" Text="Location" />
+                    <Picker
+                        BackgroundColor="#EEEEEE"
+                        HeightRequest="44"
+                        ItemsSource="{Binding LocationList}"
+                        SelectedItem="{Binding SelectedLocation}"
+                        WidthRequest="200" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    Spacing="4"
+                    VerticalOptions="Center">
+                    <Label FontAttributes="Bold" Text="Bucket" />
+                    <Picker
+                        BackgroundColor="#EEEEEE"
+                        HeightRequest="44"
+                        ItemsSource="{Binding Buckets}"
+                        SelectedItem="{Binding SelectedBucket}"
+                        WidthRequest="200" />
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+
+
+            <Grid
+                Padding="0"
+                ColumnDefinitions="Auto,Auto"
+                ColumnSpacing="16"
+                RowDefinitions="Auto">
+
+
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label FontAttributes="Bold" Text="From" />
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="8"
+                        IsVisible="False">
+
+                        <Grid.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedBucket}"
+                                TargetType="Grid"
+                                Value="hour">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </Grid.Triggers>
+
+                        <DatePicker
+                            Grid.Column="0"
+                            BackgroundColor="#EEEEEE"
+                            Date="{Binding FromDate}"
+                            HeightRequest="44"
+                            WidthRequest="130" />
+
+                        <TimePicker
+                            Grid.Column="1"
+                            Margin="0,20,0,0"
+                            BackgroundColor="#EEEEEE"
+                            Time="{Binding FromTime}" />
+                    </Grid>
+
+                    <DatePicker
+                        BackgroundColor="#EEEEEE"
+                        Date="{Binding FromDate}"
+                        HeightRequest="44"
+                        IsVisible="False"
+                        WidthRequest="200">
+
+                        <DatePicker.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedBucket}"
+                                TargetType="DatePicker"
+                                Value="day">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </DatePicker.Triggers>
+                    </DatePicker>
+
+                    <DatePicker
+                        BackgroundColor="#EEEEEE"
+                        Date="{Binding FromDate}"
+                        Format="dd / yyyy"
+                        HeightRequest="44"
+                        IsVisible="False"
+                        WidthRequest="200">
+
+                        <DatePicker.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedBucket}"
+                                TargetType="DatePicker"
+                                Value="month">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </DatePicker.Triggers>
+                    </DatePicker>
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                    <Label FontAttributes="Bold" Text="To" />
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="8"
+                        IsVisible="False">
+
+                        <Grid.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedBucket}"
+                                TargetType="Grid"
+                                Value="hour">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </Grid.Triggers>
+
+                        <DatePicker
+                            Grid.Column="0"
+                            BackgroundColor="#EEEEEE"
+                            Date="{Binding ToDate}"
+                            HeightRequest="44"
+                            WidthRequest="130" />
+
+                        <TimePicker
+                            Grid.Column="1"
+                            Margin="0,20,0,0"
+                            BackgroundColor="#EEEEEE"
+                            Time="{Binding ToTime}" />
+                    </Grid>
+
+                    <DatePicker
+                        BackgroundColor="#EEEEEE"
+                        Date="{Binding ToDate}"
+                        HeightRequest="44"
+                        IsVisible="False"
+                        WidthRequest="200">
+
+                        <DatePicker.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedBucket}"
+                                TargetType="DatePicker"
+                                Value="day">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </DatePicker.Triggers>
+                    </DatePicker>
+
+                    <DatePicker
+                        BackgroundColor="#EEEEEE"
+                        Date="{Binding ToDate}"
+                        Format="dd / yyyy"
+                        HeightRequest="44"
+                        IsVisible="False"
+                        WidthRequest="200">
+
+                        <DatePicker.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedBucket}"
+                                TargetType="DatePicker"
+                                Value="month">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </DatePicker.Triggers>
+                    </DatePicker>
+                </VerticalStackLayout>
+
+            </Grid>
+
+            <HorizontalStackLayout>
+                <Button
+                    x:Name="ToggleButton"
+                    BackgroundColor="#1E88E5"
+                    Command="{Binding ToggleChartViewCommand}"
+                    HeightRequest="44"
+                    HorizontalOptions="Start"
+                    TextColor="White"
+                    VerticalOptions="End"
+                    WidthRequest="140" />
+
+                <Button
+                    Grid.Column="4"
+                    Margin="20,0,0,0"
+                    BackgroundColor="#1E88E5"
+                    Command="{Binding SearchCommand}"
+                    HeightRequest="44"
+                    Text="Search"
+                    TextColor="White"
+                    VerticalOptions="End"
+                    WidthRequest="120" />
+
+                <Button
+                    Margin="10,0"
+                    Command="{Binding ExportToExcelCommand}"
+                    HorizontalOptions="Start"
+                    Text="Export Excel" />
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <lvc:CartesianChart
+            Grid.Row="1"
+            AnimationsSpeed="0:0:0"
+            DrawMargin="80,Auto,40,Auto"
+            IsVisible="{Binding IsLineChartVisible}"
+            UpdateStartedCommand="{Binding ChartUpdatedCommand}"
+            ZoomMode="X">
+
+            <lvc:CartesianChart.Series>
+                <lvc:SeriesCollection>
+                    <lvc:XamlLineSeries
+                        Name="In"
+                        GeometryFill="{x:Null}"
+                        GeometryStroke="{x:Null}"
+                        Values="{Binding InValues}" />
+
+                    <lvc:XamlLineSeries
+                        Name="Out"
+                        GeometryFill="{x:Null}"
+                        GeometryStroke="{x:Null}"
+                        Values="{Binding OutValues}" />
+                </lvc:SeriesCollection>
+            </lvc:CartesianChart.Series>
+
+            <lvc:CartesianChart.XAxes>
+                <lvc:AxesCollection>
+                    <lvc:XamlAxis
+                        Labeler="{Binding TimeFormatter}"
+                        MaxLimit="{Binding MaxX}"
+                        MinLimit="{Binding MinX}"
+                        MinStep="{Binding MinStep}"
+                        UnitWidth="{Binding TimeUnitWidth}" />
+                </lvc:AxesCollection>
+            </lvc:CartesianChart.XAxes>
+        </lvc:CartesianChart>
+
+        <lvc:CartesianChart
+            Grid.Row="1"
+            AnimationsSpeed="0:0:0"
+            DrawMargin="80,Auto,40,Auto"
+            IsVisible="{Binding IsLineChartVisible, Converter={StaticResource InvertedBoolConverter}}"
+            ZoomMode="X">
+
+            <lvc:CartesianChart.Series>
+                <lvc:SeriesCollection>
+                    <lvc:XamlColumnSeries Name="In" Values="{Binding BarInValues}" />
+
+                    <lvc:XamlColumnSeries Name="Out" Values="{Binding BarOutValues}" />
+                </lvc:SeriesCollection>
+            </lvc:CartesianChart.Series>
+
+            <lvc:CartesianChart.XAxes>
+                <lvc:AxesCollection>
+                    <lvc:XamlAxis
+                        ForceStepToMin="True"
+                        Labeler="{Binding BarTimeFormatter}"
+                        MaxLimit="{Binding MaxX}"
+                        MinLimit="{Binding MinX}"
+                        MinStep="1" />
+                </lvc:AxesCollection>
+            </lvc:CartesianChart.XAxes>
+
+        </lvc:CartesianChart>
+
+        <lvc:CartesianChart
+            Grid.Row="2"
+            AnimationsSpeed="0:0:0"
+            DrawMargin="80,Auto,40,Auto"
+            IsVisible="{Binding IsLineChartVisible}"
+            MovedCommand="{Binding PointerMoveCommand}"
+            PressedCommand="{Binding PointerDownCommand}"
+            ReleasedCommand="{Binding PointerUpCommand}"
+            TooltipPosition="Hidden">
+
+            <lvc:CartesianChart.Series>
+                <lvc:SeriesCollection>
+                    <lvc:XamlLineSeries Values="{Binding InValues}" />
+                    <lvc:XamlLineSeries Values="{Binding OutValues}" />
+                </lvc:SeriesCollection>
+            </lvc:CartesianChart.Series>
+
+            <lvc:CartesianChart.XAxes>
+                <lvc:AxesCollection>
+                    <lvc:XamlAxis IsVisible="False" />
+                </lvc:AxesCollection>
+            </lvc:CartesianChart.XAxes>
+
+            <lvc:CartesianChart.YAxes>
+                <lvc:AxesCollection>
+                    <lvc:XamlAxis IsVisible="False" />
+                </lvc:AxesCollection>
+            </lvc:CartesianChart.YAxes>
+
+            <lvc:CartesianChart.Sections>
+                <lvc:SectionsCollection>
+                    <lvc:XamlRectangularSection
+                        Fill="{lvc:SolidColorPaint Color='#64BBDEFB'}"
+                        Xi="{Binding MinXThumb}"
+                        Xj="{Binding MaxXThumb}" />
+                </lvc:SectionsCollection>
+            </lvc:CartesianChart.Sections>
+
+        </lvc:CartesianChart>
+
+    </Grid>
+
+</ContentPage>

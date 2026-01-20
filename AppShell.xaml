@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PeopleCounterDesktop.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:PeopleCounterDesktop.Views"
+    Title="People Counnter"
+    FlyoutBackgroundColor="#1E1E1E"
+    Shell.ForegroundColor="#1E88E5"
+    FlyoutBehavior="Flyout">
+
+
+
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout Padding="20" BackgroundColor="#1E88E5">
+            <Label
+                Text="WELCOME!"
+                FontSize="14"
+                FontFamily="PoppinsBold"
+                TextColor="White" />
+
+            <Label
+                Text="{Binding UserName}"
+                FontSize="18"
+                FontFamily="PoppinsSemiBold"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem
+        Title="Home"
+        Icon="home.png"
+        Route="Home">
+
+        
+        <ShellContent
+        Route="BuildingsPage"
+        ContentTemplate="{DataTemplate views:BuildingsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Title="Reports"
+        Icon="report.png"
+        Route="Reports">
+
+        <ShellContent
+            Title="Reports"
+            Route="ReportsPage"
+            ContentTemplate="{DataTemplate views:ReportsPage}" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+
+            <Button Text="Logout" Command="{Binding LogoutCommand}"
+                    BackgroundColor="#0096FF" TextColor="White" CornerRadius="20"
+                    Margin="0,10,0,0"/>
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>
