@@ -26,7 +26,6 @@ namespace PeopleCounterDesktop.ViewModels
         public ObservableCollection<DateTimePoint> InValues { get; } = new();
         public ObservableCollection<DateTimePoint> OutValues { get; } = new();
 
-        // For bar chart
         public ObservableCollection<ObservablePoint> BarInValues { get; } = new();
         public ObservableCollection<ObservablePoint> BarOutValues { get; } = new();
         public ObservableCollection<string> BarLabels { get; } = new();
@@ -163,100 +162,6 @@ namespace PeopleCounterDesktop.ViewModels
             IsLineChartVisible = !IsLineChartVisible;
         }
 
-        //[RelayCommand]
-        //private async Task SearchAsync()
-        //{
-        //    if (SelectedReportType == "Devices" &&
-        //        string.IsNullOrWhiteSpace(SelectedDevice))
-        //        return;
-
-        //    if (SelectedReportType == "Locations" &&
-        //        string.IsNullOrWhiteSpace(SelectedLocation))
-        //        return;
-
-
-        //    _isDown = false;
-
-        //    InValues.Clear();
-        //    OutValues.Clear();
-
-        //    BarInValues.Clear();
-        //    BarOutValues.Clear();
-        //    BarLabels.Clear();
-
-        //    MinX = MaxX = MinXThumb = MaxXThumb = double.NaN;
-
-        //    await Task.Delay(100);
-        //    var result = new List<Models.SensorTrendDto>();
-        //    if (SelectedReportType == "Locations")
-        //    {
-        //         result = await _api.GetTrendLocationAsync(
-        //            SelectedLocation,
-        //            EffectiveFromDate,
-        //            EffectiveToDate,
-        //            SelectedBucket);
-        //    }
-        //    else
-        //    {
-        //         result = await _api.GetTrendAsync(
-        //            SelectedDevice,
-        //            EffectiveFromDate,
-        //            EffectiveToDate,
-        //            SelectedBucket);
-        //    }
-                
-
-
-        //    if (result == null || result.Count == 0)
-        //        return;
-
-        //    foreach (var item in result)
-        //    {
-        //        InValues.Add(new DateTimePoint(item.Time, item.In));
-        //        OutValues.Add(new DateTimePoint(item.Time, item.Out));
-        //    }
-
-        //    var barData = SelectedBucket switch
-        //    {
-        //        "hour" => result.Count > 24 ? result.Skip(result.Count - 24).ToList() : result,
-        //        "day" => result.Count > 31 ? result.Skip(result.Count - 31).ToList() : result,
-        //        "month" => result,
-        //        _ => result
-        //    };
-
-        //    foreach (var item in barData)
-        //    {
-        //        BarInValues.Add(item.In);
-        //        BarOutValues.Add(item.Out);
-
-        //        var label = SelectedBucket switch
-        //        {
-        //            "hour" => item.Time.ToString("HH:mm"),
-        //            "day" => item.Time.ToString("dd MMM"),
-        //            "month" => item.Time.ToString("MMM yy"),
-        //            _ => item.Time.ToString("HH:mm")
-        //        };
-        //        BarLabels.Add(label);
-        //    }
-
-        //    var start = result.First().Time.Ticks;
-        //    var end = result.Last().Time.Ticks;
-
-        //    MinX = start;
-
-        //    MaxX = SelectedBucket switch
-        //    {
-        //        "hour" => Math.Min(start + TimeUnitWidth * 10, end),  
-        //        "day" => Math.Min(start + TimeUnitWidth * 7, end),    
-        //        "month" => Math.Min(start + TimeUnitWidth * 6, end),  
-        //        _ => Math.Min(start + TimeUnitWidth * 10, end)
-        //    };
-
-        //    MinXThumb = MinX;
-        //    MaxXThumb = MaxX;
-        //}
-
-
         [RelayCommand]
         private async Task SearchAsync()
         {
@@ -271,7 +176,6 @@ namespace PeopleCounterDesktop.ViewModels
 
             _isDown = false;
 
-            // Clear all collections
             InValues.Clear();
             OutValues.Clear();
 
@@ -279,7 +183,6 @@ namespace PeopleCounterDesktop.ViewModels
             BarOutValues.Clear();
             BarLabels.Clear();
 
-            // Reset axis limits
             MinX = MaxX = MinXThumb = MaxXThumb = double.NaN;
 
             await Task.Delay(100);
@@ -308,23 +211,17 @@ namespace PeopleCounterDesktop.ViewModels
 
             _lastResult = result.ToList();
 
-            // -----------------------------
-            // Fill LINE CHART data
-            // -----------------------------
+          
+            //LINE CHART data
             foreach (var item in result)
             {
                 InValues.Add(new DateTimePoint(item.Time, item.In));
                 OutValues.Add(new DateTimePoint(item.Time, item.Out));
             }
-
-            // -----------------------------
-            // Prepare BAR CHART data (limit recent points)
-            // -----------------------------
+            //Prepare BAR CHART data (limit recent points)
             var barData = result;
+            //BAR CHART with numeric X
 
-            // -----------------------------
-            // Fill BAR CHART with numeric X
-            // -----------------------------
             int index = 0;
 
             foreach (var item in barData)
@@ -337,11 +234,7 @@ namespace PeopleCounterDesktop.ViewModels
                 index++;
             }
 
-
-
-            // -----------------------------
-            // Setup LINE CHART initial window (time-based)
-            // -----------------------------
+            //Setup LINE CHART initial window (time-based)
             var start = result.First().Time.Ticks;
             var end = result.Last().Time.Ticks;
 
@@ -355,24 +248,20 @@ namespace PeopleCounterDesktop.ViewModels
                 _ => Math.Min(start + TimeUnitWidth * 10, end)
             };
 
-            // -----------------------------
-            // Setup BAR CHART initial window (index-based)
-            // This will override MinX/MaxX when bar chart is visible
-            // -----------------------------
+
             if (BarInValues.Count > 0)
             {
                 MinX = 0;
 
                 MaxX = SelectedBucket switch
                 {
-                    "hour" => Math.Min(10, BarInValues.Count - 1),   // show 10 bars
-                    "day" => Math.Min(7, BarInValues.Count - 1),    // show 7 days
-                    "month" => Math.Min(6, BarInValues.Count - 1),  // show 6 months
+                    "hour" => Math.Min(10, BarInValues.Count - 1),  
+                    "day" => Math.Min(7, BarInValues.Count - 1),   
+                    "month" => Math.Min(6, BarInValues.Count - 1),
                     _ => Math.Min(10, BarInValues.Count - 1)
                 };
             }
 
-            // Sync thumbs
             MinXThumb = MinX;
             MaxXThumb = MaxX;
         }
@@ -388,7 +277,7 @@ namespace PeopleCounterDesktop.ViewModels
 
             return SelectedBucket switch
             {
-                "hour" => dt.ToString("dd MMM HH:mm"),   // show date + hour
+                "hour" => dt.ToString("dd MMM HH:mm"),   
                 "day" => dt.ToString("dd MMM"),
                 "month" => dt.ToString("MMM yyyy"),
                 _ => dt.ToString("HH:mm")
@@ -439,17 +328,14 @@ namespace PeopleCounterDesktop.ViewModels
                 using var workbook = new ClosedXML.Excel.XLWorkbook();
                 var ws = workbook.Worksheets.Add("Report");
 
-                // Header
                 ws.Cell(1, 1).Value = "Time";
                 ws.Cell(1, 2).Value = "In";
                 ws.Cell(1, 3).Value = "Out";
 
                 ws.Range(1, 1, 1, 3).Style.Font.Bold = true;
 
-                // Data
                 var exportData = GetGroupedForExport();
 
-                // Header
                 ws.Cell(1, 1).Value = SelectedBucket switch
                 {
                     "hour" => "Hour",
@@ -463,7 +349,6 @@ namespace PeopleCounterDesktop.ViewModels
 
                 ws.Range(1, 1, 1, 3).Style.Font.Bold = true;
 
-                // Data
                 int row = 2;
 
                 foreach (var item in exportData)
@@ -487,14 +372,12 @@ namespace PeopleCounterDesktop.ViewModels
 
                 ws.Columns().AdjustToContents();
 
-                // Save to memory stream
                 using var stream = new MemoryStream();
                 workbook.SaveAs(stream);
                 stream.Position = 0;
 
                 var fileName = $"Report_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
 
-                // Let user choose where to save
                 var result = await FileSaver.Default.SaveAsync(
                     fileName,
                     stream,
