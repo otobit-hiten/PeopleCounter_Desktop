@@ -1,0 +1,87 @@
+## =========================
+## .NET / Visual Studio
+## =========================
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM/
+ARM64/
+
+# Visual Studio cache/options
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+## =========================
+## .NET MAUI specific
+## =========================
+
+# Generated platform folders
+Platforms/*/bin/
+Platforms/*/obj/
+
+# Android
+*.apk
+*.aab
+*.keystore
+
+# iOS / MacCatalyst
+*.app
+*.dSYM/
+*.xcarchive/
+
+# Windows
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+
+## =========================
+## Certificates / Secrets
+## =========================
+
+# Signing certificates (IMPORTANT)
+*.pfx
+
+# App secrets
+appsettings.*.json
+secrets.json
+
+## =========================
+## NuGet
+## =========================
+
+# NuGet packages (optional – usually restored automatically)
+packages/
+*.nupkg
+.nuget/
+
+## =========================
+## OS generated files
+## =========================
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~

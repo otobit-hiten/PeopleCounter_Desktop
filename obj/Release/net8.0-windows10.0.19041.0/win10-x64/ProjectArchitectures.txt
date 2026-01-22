@@ -1,1 +1,0 @@
-D:\PeopleCounterDesktop\PeopleCounterDesktop\PeopleCounterDesktop.csproj;x64
