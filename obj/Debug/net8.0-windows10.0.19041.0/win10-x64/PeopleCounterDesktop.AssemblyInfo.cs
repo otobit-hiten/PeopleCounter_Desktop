@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PeopleCounterDesktop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+0b6b59ef523c2d9f1a08998f922643cdca93a1f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("PeopleCounterDesktop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PeopleCounterDesktop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

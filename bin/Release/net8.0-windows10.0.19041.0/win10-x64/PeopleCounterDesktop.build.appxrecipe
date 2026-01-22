@@ -76,21 +76,6 @@
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\Poppins-SemiBold.ttf">
       <PackagePath>Poppins-SemiBold.ttf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
-      <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
-      <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
-      <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
-      <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
-      <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
     </AppxPackagedFile>
@@ -229,14 +214,29 @@
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
+      <PackagePath>dotnet_bot.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
+      <PackagePath>dotnet_bot.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
+      <PackagePath>dotnet_bot.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
+      <PackagePath>dotnet_bot.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
+      <PackagePath>dotnet_bot.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\logout.scale-100.png">
       <PackagePath>logout.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\home.scale-100.png">
-      <PackagePath>home.scale-100.png</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\report.scale-100.png">
       <PackagePath>report.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\home.scale-100.png">
+      <PackagePath>home.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\empty.scale-100.png">
       <PackagePath>empty.scale-100.png</PackagePath>
@@ -247,23 +247,23 @@
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\user.scale-100.png">
       <PackagePath>user.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\building.scale-100.png">
+      <PackagePath>building.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\lock.scale-100.png">
+      <PackagePath>lock.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\out_user.scale-100.png">
       <PackagePath>out_user.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\in.scale-100.png">
+      <PackagePath>in.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\in_user.scale-100.png">
       <PackagePath>in_user.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\out.scale-100.png">
       <PackagePath>out.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\in.scale-100.png">
-      <PackagePath>in.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\lock.scale-100.png">
-      <PackagePath>lock.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\obj\Release\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\building.scale-100.png">
-      <PackagePath>building.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\PeopleCounterDesktop\PeopleCounterDesktop\bin\Release\net8.0-windows10.0.19041.0\win10-x64\PeopleCounterDesktop.deps.json">
       <PackagePath>PeopleCounterDesktop.deps.json</PackagePath>
